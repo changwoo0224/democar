@@ -16,14 +16,14 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="$(find rlcar_gazebo)/meshes/depth435.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="$(find democar_gazebo)/meshes/depth435.stl" scale="0.001 0.001 0.001"/>
             </geometry>
             <material name="silver"/>
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="$(find rlcar_gazebo)/meshes/depth435.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="$(find democar_gazebo)/meshes/depth435.stl" scale="0.001 0.001 0.001"/>
             </geometry>
         </collision>
     </link>

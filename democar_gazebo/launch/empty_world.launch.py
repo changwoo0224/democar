@@ -104,7 +104,7 @@ def generate_launch_description():
                     '-y', '0.0',
                     '-z', '0.06',
                     '-Y', '0.0',
-                    '-entity', 'rlcar'
+                    '-entity', 'democar'
                 ],
         output='screen'
     )
@@ -132,7 +132,7 @@ def generate_launch_description():
     )
 
     # Car controller launch
-    rlcar_gazebo_controller = Node(
+    democar_gazebo_controller = Node(
         package='democar_controller',
         executable='democar_controller',
         output='screen',
@@ -202,7 +202,7 @@ def generate_launch_description():
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=load_velocity_controller,
-                on_exit=[rlcar_gazebo_controller],
+                on_exit=[democar_gazebo_controller],
             )
         ),
         RegisterEventHandler(
