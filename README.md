@@ -54,5 +54,5 @@ ros2 launch democar_gazebo racecourse.launch.py
 ros2 launch democar_navigation racecourse_bringup_launch.py
 ```
 "Be sure that first code and second must run diferent terminal window"
-"You can change map file
+"You can change map file"
 
