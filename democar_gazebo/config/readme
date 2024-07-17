@@ -1,0 +1,6 @@
+How to open view_turtle.rviz with terminal
+
+Type 
+rviz2 -d src/turtle/config/view_turtle.rviz
+
+Done!

@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+   
+    <material name="black">
+        <color rgba="0.0 0.0 0.0 1.0"/>
+    </material>
+  
+    <material name="dark">
+      <color rgba="0.3 0.3 0.3 1.0"/>
+    </material>
+    <material name="light_black">
+      <color rgba="0.4 0.4 0.4 1.0"/>
+    </material>
+  
+    <material name="blue">
+      <color rgba="0.0 0.0 0.8 1.0"/>
+    </material>
+  
+    <material name="green">
+      <color rgba="0.0 0.8 0.0 1.0"/>
+    </material>
+  
+    <material name="grey">
+      <color rgba="0.5 0.5 0.5 1.0"/>
+    </material>
+  
+    <material name="orange">
+      <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+    </material>
+  
+    <material name="brown">
+      <color rgba="${222/255} ${207/255} ${195/255} 1.0"/>
+    </material>
+  
+    <material name="red">
+      <color rgba="0.8 0.0 0.0 1.0"/>
+    </material>
+  
+    <material name="white">
+      <color rgba="1.0 1.0 1.0 1.0"/>
+    </material>
+
+    <link name="base_footprint"/>
+    
+    <!-- BASE LINK -->
+    <link name="base_link">
+
+    </link>
+    <!-- CHASSIS LINK-->
+    <joint name="chassis_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="chassis"/>
+        <oriin xyz="0 0 0.010" rpy="0 0 0"/>
+    </joint>
+
+    <link name="chassis">
+        <visual>
+            <origin xyz="-0.064 0 0.0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://turtle/meshes/base.dae" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="light_black">
+
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="-0.064 0 0.0" rpy="0 0 0"/>
+            <geometry>
+               <mesh filename="package://turtle/meshes/base.dae" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="light_black"></material>
+        </collision>
+
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <mass value="1.3729096e+00"/>
+            <inertia ixx="8.7002718e-03" ixy="-4.7576583e-05" ixz="1.1160499e-04"
+                     iyy="8.6195418e-03" iyz="-3.5422299e-06"
+                     izz="1.4612727e-02" />
+        </inertial>
+    </link>
+    
+    <!-- LEFt wheel link-->
+
+    <joint name="left_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_wheel"/>
+        <origin xyz="0.0 0.144 0.023" rpy="-${pi/2} 0 0"/>
+        <axis xyz="0 0 1"/>
+        
+    </joint>
+
+    <link name="left_wheel">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <mesh filename="package://turtle/meshes/left_tire.dae" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="dark"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <mesh filename="package://turtle/meshes/left_tire.dae" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="dark"/>
+        </collision>
+      
+          <inertial>
+            <origin xyz="0 0 0" />
+            <mass value="2.8498940e-02" />
+            <inertia ixx="1.1175580e-05" ixy="-4.2369783e-11" ixz="-5.9381719e-09"
+                     iyy="1.1192413e-05" iyz="-1.4400107e-11"
+                     izz="2.0712558e-05" />
+            </inertial>
+    </link>s
+   
+
+    <!-- Right Wheel-->
+    
+
+    <joint name="right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_wheel"/>
+        <origin xyz="0.0 -0.144 0.023" rpy="-${pi/2} 0 0"/>
+        <axis xyz="0 0 1"/>
+        
+    </joint>
+
+    <link name="right_wheel">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <mesh filename="package://turtle/meshes/right_tire.dae" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="dark"/>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.0" rpy="${pi/2} 0 0"/>
+            <geometry>
+                <mesh filename="package://turtle/meshes/right_tire.dae" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="dark"/>
+        </collision>
+      
+        <inertial>
+            <origin xyz="0 0 0" />
+            <mass value="2.8498940e-02" />
+            <inertia ixx="1.1175580e-05" ixy="-4.2369783e-11" ixz="-5.9381719e-09"
+                     iyy="1.1192413e-05" iyz="-1.4400107e-11"
+                     izz="2.0712558e-05" />
+        </inertial>
+    </link>
+   
+ 
+    
+    <!-- caster-->
+    <joint name="caster_back_right_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="caster_back_right_link"/>
+        <origin xyz="-0.177 -0.064 -0.004" rpy="-1.57 0 0"/>
+    </joint>
+    
+    <link name="caster_back_right_link">
+        <collision>
+          <origin xyz="0 0.001 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.030 0.009 0.020"/>
+          </geometry>
+        </collision>
+    
+        <inertial>
+          <origin xyz="0 0 0" />
+          <mass value="0.005" />
+          <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                   iyy="0.001" iyz="0.0"
+                   izz="0.001" />
+        </inertial>
+    </link>
+    <gazebo reference="caster_back_right_link">
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
+    </gazebo>
+      
+    <joint name="caster_back_left_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="caster_back_left_link"/>
+        <origin xyz="-0.177 0.064 -0.004" rpy="-1.57 0 0"/>
+    </joint>
+    
+    <link name="caster_back_left_link">
+        <collision>
+          <origin xyz="0 0.001 0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.030 0.009 0.020"/>
+          </geometry>
+        </collision>
+    
+        <inertial>
+          <origin xyz="0 0 0" />
+          <mass value="0.005" />
+          <inertia ixx="0.001" ixy="0.0" ixz="0.0"
+                   iyy="0.001" iyz="0.0"
+                   izz="0.001" />
+        </inertial>
+    </link>
+
+    <gazebo reference="caster_back_left_link">
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
+    </gazebo>
+    
+</robot>

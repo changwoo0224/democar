@@ -1,0 +1,234 @@
+<?xml version="1.0" ?>
+
+  
+
+
+<robot name="democar">
+
+  <material name="black">
+    <color rgba="0.0 0.0 0.0 1.0"/>
+  </material>
+
+  <material name="dark">
+    <color rgba="0.3 0.3 0.3 1.0"/>
+  </material>
+  <material name="light_black">
+    <color rgba="0.4 0.4 0.4 1.0"/>
+  </material>
+
+  <material name="blue">
+    <color rgba="0.0 0.0 0.8 1.0"/>
+  </material>
+
+  <material name="green">
+   <color rgba="0.0 0.8 0.0 1.0"/>
+  </material>
+
+  <material name="grey">
+   <color rgba="0.5 0.5 0.5 1.0"/>
+  </material>
+
+  <material name="orange">
+    <color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+  </material>
+
+  <material name="brown">
+    <color rgba="${222/255} ${207/255} ${195/255} 1.0"/>
+  </material>
+
+  <material name="red">
+    <color rgba="0.8 0.0 0.0 1.0"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1.0 1.0 1.0 1.0"/>
+  </material>
+  <material name="silver">
+    <color rgba="0.700 0.700 0.700 1.000"/>
+  </material>
+  
+  <link name="base_footprint" />
+
+  <link name="base_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.08610442944117125 -0.0010181684635799757 0.03851437758777222"/>
+      <mass value="2.9675633650363595"/>
+      <inertia ixx="0.011642" ixy="0.000148" ixz="0.000342" iyy="0.035651" iyz="-9.3e-05" izz="0.038255"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://democar/meshes/body.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="red"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://democar/meshes/body.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="red"/>
+    </collision>
+  </link>
+
+
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  
+  <link name="lf_steering_hinge_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.100"/>
+      <inertia ixx="4E-06" ixy="0" ixz="0" iyy="4E-06" iyz="0" izz="4E-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.005 0.005 0.005"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="lf_steering_hinge_joint" type="revolute">
+    <origin rpy="0 1.5708 0" xyz="0.630 0.200 0"/>
+    <parent link="base_link"/>
+    <child link="lf_steering_hinge_link"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="10" lower="-0.7853" upper="0.7853" velocity="100"/>
+  </joint>
+  <link name="lf_wheel_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 -1.4645191273516483e-15 1.0536108829867972e-17"/>
+      <mass value="0.20069792517970372"/>
+      <inertia ixx="0.00025" ixy="0.0" ixz="-0.0" iyy="0.00014" iyz="0.0" izz="0.00014"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://democar/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://democar/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </collision>
+  </link>
+  <joint name="lf_wheel_joint" type="continuous">
+    <origin rpy="0 0 1.5707" xyz="0.0 0.0 0.0"/>
+    <parent link="lf_steering_hinge_link"/>
+    <child link="lf_wheel_link"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="100"/>
+  </joint>
+  <link name="rf_steering_hinge_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.100"/>
+      <inertia ixx="4E-06" ixy="0" ixz="0" iyy="4E-06" iyz="0" izz="4E-06"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.005 0.005 0.005"/>
+      </geometry>
+    </visual>
+  </link>
+  <joint name="rf_steering_hinge_joint" type="revolute">
+    <origin rpy="0 1.5708 0" xyz="0.630 -0.200 0"/>
+    <parent link="base_link"/>
+    <child link="rf_steering_hinge_link"/>
+    <axis xyz="-1 0 0"/>
+    <limit effort="10" lower="-0.7853" upper="0.7853" velocity="100"/>
+  </joint>
+  <link name="rf_wheel_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 -1.4645191273516483e-15 1.0536108829867972e-17"/>
+      <mass value="0.20069792517970372"/>
+      <inertia ixx="0.00025" ixy="0.0" ixz="-0.0" iyy="0.00014" iyz="0.0" izz="0.00014"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://democar/meshes/rwheel.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://democar/meshes/rwheel.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </collision>
+  </link>
+  <joint name="rf_wheel_joint" type="continuous">
+    <origin rpy="0 0 1.5707" xyz="0.0 0.0 0.0"/>
+    <parent link="rf_steering_hinge_link"/>
+    <child link="rf_wheel_link"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="100"/>
+  </joint>
+  <link name="lr_wheel_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 -1.4645191273516483e-15 1.0536108829867972e-17"/>
+      <mass value="0.20069792517970372"/>
+      <inertia ixx="0.00025" ixy="0.0" ixz="-0.0" iyy="0.00014" iyz="0.0" izz="0.00014"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://democar/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://democar/meshes/wheel.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </collision>
+  </link>
+  <joint name="lr_wheel_joint" type="continuous">
+    <origin rpy="0 0 1.5707" xyz="0.0 0.280 0.0"/>
+    <parent link="base_link"/>
+    <child link="lr_wheel_link"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+  <link name="rr_wheel_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.0 -1.4645191273516483e-15 1.0536108829867972e-17"/>
+      <mass value="0.20069792517970372"/>
+      <inertia ixx="0.00025" ixy="0.0" ixz="-0.0" iyy="0.00014" iyz="0.0" izz="0.00014"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://democar/meshes/rwheel.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://democar/meshes/rwheel.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="black"/>
+    </collision>
+  </link>
+  <joint name="rr_wheel_joint" type="continuous">
+    <origin rpy="0 0 1.5707" xyz="0.0 -0.280 0.0"/>
+    <parent link="base_link"/>
+    <child link="rr_wheel_link"/>
+    <axis xyz="1 0 0"/>
+  </joint>
+ 
+
+</robot>
