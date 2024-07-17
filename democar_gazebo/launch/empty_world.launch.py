@@ -132,7 +132,7 @@ def generate_launch_description():
     )
 
     # Car controller launch
-    democar_gazebo_controller = Node(
+    democar_controller = Node(
         package='democar_controller',
         executable='democar_controller',
         output='screen',
@@ -202,7 +202,7 @@ def generate_launch_description():
         RegisterEventHandler(
             event_handler=OnProcessExit(
                 target_action=load_velocity_controller,
-                on_exit=[democar_gazebo_controller],
+                on_exit=[democar_controller],
             )
         ),
         RegisterEventHandler(
