@@ -56,4 +56,3 @@ ros2 launch democar_navigation racecourse_bringup_launch.py
 "Be sure that first code and second must run diferent terminal window"
 "You can change map file
 
-```
