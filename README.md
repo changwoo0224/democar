@@ -24,7 +24,7 @@ chmod 777 setup.sh
 cd ~/ros2_ws/
 colcon build --symlink-install --packages-select democar_gazebo
 colcon build --symlink-install --packages-select democar_gazebo_controller
-colcon build --symlink-install --packages-select democar_gazebo_odom
+colcon build --symlink-install --packages-select democar_odom
 colcon build --symlink-install --packages-select democar_slam
 colcon build --symlink-install --packages-select democar_navigation
 source install/setup.bash
