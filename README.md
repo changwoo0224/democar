@@ -45,7 +45,8 @@ ros2 launch democar_gazebo racecourse.launch.py
 ros2 launch democar_gazebo racecourse.launch.py
 ros2 launch democar_slam slam_toolbox.launch.py
 ```
-"Be sure that first code and second must run diferent terminal window"
+"Make sure that the first command and the second command are run in different terminal windows."
+
 
 * Run the navigation
 
