@@ -1,7 +1,7 @@
 # Democar (This package is for ros2 foxy)
 
 
-* Make ros2 work space
+* Make ros2 workspace
 
 ```
 mkdir -p ~/ros2_ws/src
